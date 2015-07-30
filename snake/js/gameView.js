@@ -24,9 +24,19 @@
       });
     };
 
+    View.prototype.checkForSnakes = function(){
+      $(".box").removeClass("occupied");
+      this.board.snake.segments.forEach(function(segment){
+        var row = segment[0];
+        var col = segment[1];
+        $(".box.col-"+ col + ".row-" + row).addClass("occupied");
+      });
+    };
+
     View.prototype.step = function(){
+      var that = this;
       this.board.snake.move();
-      this.board.render();
+      that.checkForSnakes();
     };
 
     View.prototype.run = function(){
@@ -45,7 +55,7 @@
         $board.append($row);
         for (var j = 0; j < this.board.grid.length; j++) {
           var $box = $("<div>");
-          $box.addClass("box").attr("data-col",j).attr("data-row",i);
+          $box.addClass("box").addClass("col-" + j).addClass("row-" + i);
           $row.append($box);
         }
       }
