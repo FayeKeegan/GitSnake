@@ -7,7 +7,7 @@
       this.bindListener();
       this.setUpView();
       this.run();
-      this.$apple = $("<i>").addClass("fa fa-square apple");
+      this.$apple = $("<i>").addClass("fa fa-code-fork apple");
       this.points = 0;
     };
 
@@ -50,7 +50,7 @@
       if (this.board.apple){
         var row = this.board.apple[0];
         var col = this.board.apple[1];
-        $(".box.col-" + col + ".row-" + row).append(this.$apple);
+        $(".box.col-" + col + ".row-" + row).addClass("has-apple").append(this.$apple);
       }
     };
 
@@ -65,9 +65,7 @@
       that.board.snake.move();
       that.checkForSnakes();
       that.checkForApple();
-      // debugger
       if (that.board.appleEaten()){
-        // debugger
         that.removeApple();
         that.points = that.points + 1;
         that.displayPoints();

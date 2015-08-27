@@ -78,12 +78,22 @@
   Board.prototype.isOver = function(){
     var that = this;
     var over = false;
-    this.snake.segments.forEach(function(segment){
-      if(!that.onBoard(segment)){
-        over = true;
+    var segments = this.snake.segments
+    for (var i = 0; i < segments.length; i++) {
+      var seg = segments[i];
+      var nextSeg = segments[i+1];
+      if(!that.onBoard(seg)){
+                over = true;
       }
-    });
+      for (var j = i + 1; j < segments.length; j++) {
+        var checkSeg = segments[j];
+        var count = 0;
+        if (checkSeg[0] === seg[0] && checkSeg[1] === seg[1]){
+          over = true;
+        }
+      }
+    }
     return over;
-  }
+  };
 
 })();
