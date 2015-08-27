@@ -89,6 +89,18 @@ body {
   position: relative;
 }
 
+.panel-body.contributions-panel-body {
+  padding:0px;
+}
+
+.table>tbody>tr>td.first-cell{
+  border-top: 0px;
+}
+
+.contribution-table-row {
+  height: 152px;
+}
+
 .level-1 {
   background-color: #d6e685;
 }
