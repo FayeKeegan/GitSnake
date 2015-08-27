@@ -16,6 +16,12 @@
   <script>
     $(function(){
 
+      var count = 0;
+      while (count < 299){
+        count = count + 1;
+        var box = $("<div>").addClass("commit-box").attr("number", count)
+        $(".points-list").append(box)
+      }
       var welcomeMessage = $("<h2>").text("WELCOME TO SNAKE").addClass("welcome-message")
       $(".snake-board").append(welcomeMessage)
       setTimeout(function(){
@@ -24,11 +30,16 @@
       },3000)
     });
   </script>
-
-  <div class='header'>
-    <h1 class="title-header"> SNAKE </h1>
-    <h2 class="points-header"> POINTS <span id="points">0</span> </h2>
+  <div class="score-container">
+    <h1 class="points-header"><span id="points">0</span> Commits </h1>
+    <div class="points-board">
+      <ul class="points-list"></ul>
+    </div>
   </div>
-  <div class="snake-board"> </div>
-  </body>
+  <div class= "game-container">
+    <div class='header'>
+      <h1 class="title-header"> GitSnake </h1>
+    </div>
+    <div class="snake-board"> </div>
+  </div>
 </html>
