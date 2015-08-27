@@ -7,6 +7,7 @@
       this.bindListener();
       this.setUpView();
       this.run();
+      this.applePoints = 1
       this.$apple = $("<i>").addClass("fa fa-code-fork apple");
       this.points = 0;
     };
@@ -47,15 +48,23 @@
     };
 
     View.prototype.checkForApple = function(){
+      if (!this.applePoints){
+        this.applePoints = Math.floor(Math.random() * 5 +1)
+      }
       if (this.board.apple){
         var row = this.board.apple[0];
         var col = this.board.apple[1];
-        $(".box.col-" + col + ".row-" + row).addClass("has-apple").append(this.$apple);
+        $(".box.col-" + col + ".row-" + row)
+          .addClass("has-apple")
+          .addClass("level-" + this.applePoints)
+          .append(this.$apple);
       }
     };
 
     View.prototype.removeApple = function(){
+      this.$apple.parent().removeClass("has-apple")
       this.$apple.remove();
+      this.applePoints = null;
       this.board.clearApple();
     };
 
@@ -66,13 +75,13 @@
       that.checkForSnakes();
       that.checkForApple();
       if (that.board.appleEaten()){
+        that.points = that.points + that.applePoints;
         that.removeApple();
-        that.points = that.points + 1;
         that.displayPoints();
 
         that.board.snake.grow();
       }
-      if (View.TURNCOUNT % 10 === 0 && !that.board.apple){
+      if (!that.board.apple){
         that.board.addApple()
         that.hasApple = true;
       }

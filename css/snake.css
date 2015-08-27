@@ -55,12 +55,13 @@ body {
   -webkit-font-smoothing: antialiased;
 }
 
+
 .snake-board {
   margin: auto;
-  width: 452px;
-  height: 452px;
+  width: 450px;
+  height: 450px;
   background-color: #f5f5f5;
-  border: 1px solid #ddd;
+/*  border: 1px solid #ddd;*/
   color: black;
   /*float: top;*/
   font-family: sans-serif;
@@ -90,6 +91,22 @@ body {
 
 .box.has-apple {
   background-color: rgb(68, 163, 64)
+}
+
+.box.has-apple.level-1 {
+  background-color: #d6e685;
+}
+
+.box.has-apple.level-2 {
+  background-color: #8cc665;
+}
+
+.box.has-apple.level-3 {
+  background-color: #44a340;
+}
+
+.box.has-apple.level-4 {
+  background-color: #1e6823;
 }
 
 .box.occupied {
