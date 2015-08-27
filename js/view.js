@@ -44,7 +44,7 @@
 
     View.prototype.displayPoints = function(){
       $("#points").text(this.points)
-      $("[number= " + this.points + "]").addClass("committed")
+      $("[number= " + this.points + "]").addClass("level-" + this.applePoints)
     };
 
     View.prototype.checkForApple = function(){
@@ -62,7 +62,7 @@
     };
 
     View.prototype.removeApple = function(){
-      this.$apple.parent().removeClass("has-apple")
+      this.$apple.parent().removeClass("has-apple level-" + this.applePoints)
       this.$apple.remove();
       this.applePoints = null;
       this.board.clearApple();
@@ -76,8 +76,8 @@
       that.checkForApple();
       if (that.board.appleEaten()){
         that.points = that.points + that.applePoints;
-        that.removeApple();
         that.displayPoints();
+        that.removeApple();
 
         that.board.snake.grow();
       }
