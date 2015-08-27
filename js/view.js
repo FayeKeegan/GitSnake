@@ -43,6 +43,7 @@
 
     View.prototype.displayPoints = function(){
       $("#points").text(this.points)
+      $("[number= " + this.points + "]").addClass("committed")
     };
 
     View.prototype.checkForApple = function(){
