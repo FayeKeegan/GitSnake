@@ -3,24 +3,32 @@
   <head>
     <meta charset="utf-8">
     <link rel="stylesheet" type="text/css" href="../css/snake.css">
-    <title></title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+    <title> GitSnake</title>
   </head>
   <body>
   <script src="../js/jquery-2.1.1.js"></script>
   <!-- Whackjobs at GithubPages don't understand symlinks... -->
   <script src="../js/snake.js"></script>
   <script src="../js/board.js"></script>
-  <script src="../js/gameView.js"></script>
+  <script src="../js/view.js"></script>
 
   <script>
     $(function(){
-      new SnakeGame.View($(".snake-board"))
+
+      var welcomeMessage = $("<h2>").text("WELCOME TO SNAKE").addClass("welcome-message")
+      $(".snake-board").append(welcomeMessage)
+      setTimeout(function(){
+        $(".snake-board").empty();
+        new SnakeGame.View($(".snake-board"))
+      },3000)
     });
   </script>
 
-  <div class="snake-board">
-
+  <div class='header'>
+    <h1 class="title-header"> SNAKE </h1>
+    <h2 class="points-header"> POINTS <span id="points">0</span> </h2>
   </div>
-
+  <div class="snake-board"> </div>
   </body>
 </html>

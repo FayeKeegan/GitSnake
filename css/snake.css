@@ -1,18 +1,85 @@
+
+body {
+  background-color: white
+  font: 13px/1.4 Helvetica, arial, nimbussansl, liberationsans, freesans, clean, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol";
+  color: #333;
+}
+
+.header {
+  font-family: Helvetica;
+  font-size: 14px;
+  font-style: normal;
+  font-variant: normal;
+  font-weight: bold;
+  text-align: center;
+}
+.fa.apple {
+  color: rgb(68, 163, 64);
+  display: inline-block;
+  font: normal normal normal 30px/1 FontAwesome;
+  text-rendering: auto;
+  -webkit-font-smoothing: antialiased;
+}
+
+.fa.snake-segment {
+  display: inline-block;
+  font: normal normal normal 30px/1 FontAwesome;
+  text-rendering: auto;
+  -webkit-font-smoothing: antialiased;
+}
+
+.title-header {
+}
+
+.points-header {
+}
+
 .snake-board {
-  width: 460px;
-  height: 460px;
-  background: whitesmoke;
-  border: 1px solid black;
-  box-sizing: border-box;
+  margin: auto;
+  width: 450px;
+  height: 450px;
+  background: white;
+  border: 0px solid black;
+  color: black;
+  float: top;
+  font-family: sans-serif;
+}
+
+.header {
+  margin: auto;
+  width: 450px;
+  height: 150px;
+}
+
+.welcome-message {
+  text-align: center;
+  margin: auto;
+  width: 450px;
+  color: black;
+  float: top;
+  font-family: sans-serif;
+  font-size: -webkit-xxx-large;
+  text-align: center;
+}
+
+.board-header {
+  margin: auto;
+  width: 450px;
+  color: black;
+  float: top;
+  font-family: sans-serif;
+  font-size: -webkit-xxx-large;
+  text-align: center;
 }
 
 .box {
-  border: 1px solid black;
+  border: 0px solid gray;
+  padding: 0;
   float: left;
   box-sizing: border-box;
   width: 30px;
   height: 30px;
-  background: gray;
+  background: #f5f5f5;
   position: relative;
 }
 
