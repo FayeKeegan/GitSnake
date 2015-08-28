@@ -130,7 +130,7 @@
     };
 
     View.prototype.setDayCount = function(){
-      View.DAYCOUNT = View.TURNCOUNT < 30 ? 1 : Math.floor(View.TURNCOUNT / 20) + 1
+      View.DAYCOUNT = View.TURNCOUNT < 30 ? 1 : Math.floor(View.TURNCOUNT / 15) + 1
     };
 
     View.prototype.run = function(){
@@ -143,7 +143,7 @@
           clearInterval(gameTimer);
           this.endGame();
         }
-      }.bind(this), 200);
+      }.bind(this), 175);
     }
 
     View.prototype.setUpView = function () {

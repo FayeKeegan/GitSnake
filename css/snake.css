@@ -18,29 +18,23 @@ body {
 
 
 .points-list {
-  width: 120px;
+  width: 119px;
   height: 450px;
   box-sizing: border-box;
   background: white;
   margin: auto
 }
 
-.weekday-box {
-  width: 15px;
-  height: 15px;
-  float: left;
-  padding: 0px;
-  margin: 1px;
-}
 
 .commit-box {
-  box-sizing: border-box;
-  background: #f5f5f5;
+  border: 1px solid white;
+  padding: 0;
+  float: left;
+  
   width: 15px;
   height: 15px;
-  float: left;
-  padding: 0px;
-  margin: 1px;
+  background: #f5f5f5;
+  position: relative;
 }
 
 .commit-box.current-day {
@@ -54,7 +48,7 @@ body {
   height: 15px;
   float: left;
   padding: 0px;
-  margin: 1px;
+  margin: 0px;
 }
 
 .commit-box.committed {
@@ -63,14 +57,14 @@ body {
 .fa.apple {
   color: white;
   display: inline-block;
-  font: normal normal normal 25px/1 FontAwesome;
+  font: normal normal normal 10px/1 FontAwesome;
   text-rendering: auto;
   -webkit-font-smoothing: antialiased;
 }
 
 .fa.snake-segment {
   display: inline-block;
-  font: normal normal normal 30px/1 FontAwesome;
+  font: normal normal normal 10px/1 FontAwesome;
   text-rendering: auto;
   -webkit-font-smoothing: antialiased;
 }
@@ -97,8 +91,8 @@ body {
   padding: 0;
   float: left;
   box-sizing: border-box;
-  width: 30px;
-  height: 30px;
+  width: 15px;
+  height: 15px;
   background: #f5f5f5;
   position: relative;
 }
