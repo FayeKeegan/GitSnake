@@ -12,6 +12,7 @@ body {
 .commit-icon {
   color: #8cc665;
 }
+
 .bug-icon {
   color: #df3e3e
 }
@@ -53,6 +54,15 @@ body {
 
 .commit-box.committed {
   background-color: green;
+}
+
+.fa.bug {
+  color: #df3e3e;
+  display: inline-block;
+  font: normal normal normal 25px/1 FontAwesome;
+  vertical-align: -webkit-baseline-middle
+  text-rendering: auto;
+  -webkit-font-smoothing: antialiased;
 }
 .fa.apple {
   color: #f5f5f5;

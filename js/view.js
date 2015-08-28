@@ -5,6 +5,7 @@
       this.$el = $el;
       this.applePoints = 4
       this.$apple = $("<i>").addClass("fa fa-code-fork apple");
+      this.$bug = $("<i>").addClass("fa fa-bug bug");
       this.points = 0;
       $(".start-button, .restart-button").click(function(){
         this.startGame();
@@ -84,6 +85,23 @@
       }
     };
 
+     View.prototype.checkForBug = function(){
+      if (this.board.bug){
+        var row = this.board.bug[0];
+        var col = this.board.bug[1];
+        $(".box.col-" + col + ".row-" + row)
+          .addClass("has-bug")
+          .addClass("level-" + this.bugPoints)
+          .append(this.$bug);
+      }
+    };
+
+    View.prototype.removeBug = function(){
+      this.$bug.parent().removeClass("has-bug level-" + this.bugPoints)
+      this.$bug.remove();
+      this.board.clearbug();
+    };
+
     View.prototype.removeApple = function(){
       this.$apple.parent().removeClass("has-apple level-" + this.applePoints)
       this.$apple.remove();
@@ -91,12 +109,14 @@
       this.board.clearApple();
     };
 
+
     View.prototype.step = function(){
       var that = this;
       that.clearBoard();
       that.board.snake.move();
       that.checkForSnakes();
       that.checkForApple();
+      that.checkForBug();
       if (!this.streak[View.DAYCOUNT] && !this.streak[View.DAYCOUNT - 1]){
         this.streakCount = 0;
       }
@@ -120,6 +140,11 @@
       if (!that.board.apple){
         that.board.addApple()
         that.hasApple = true;
+      }
+
+      if (View.TURNCOUNT % 20 === 0){
+        that.board.clearBug();
+        that.board.addBug();
       }
       $(".commit-box[number=" + View.DAYCOUNT + "]").removeClass("current-day");
       View.TURNCOUNT ++;

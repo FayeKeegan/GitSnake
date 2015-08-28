@@ -7,6 +7,7 @@
     this.snake = undefined;
     this.setUpSnake();
     this.apple = [2,9];
+    this.bug = [12,12]
   };
 
   Board.BOARD_SIZE = 15;
@@ -16,6 +17,10 @@
   Board.prototype.clearApple = function(){
     this.apple = null;
   };
+  Board.prototype.clearBug = function(){
+    this.bug = null;
+  };
+
 
   Board.prototype.setUpGrid = function () {
     for (var i = 0; i < Board.BOARD_SIZE; i++) {
@@ -39,17 +44,25 @@
     return snakeAtPos;
   };
 
-  Board.prototype.pickApplePos = function(){
+  Board.prototype.pickRandPos = function(){
     var randX = Math.floor(Math.random() * Board.BOARD_SIZE);
     var randY = Math.floor(Math.random() * Board.BOARD_SIZE);
     var applePos = [randX, randY];
     return applePos;
   };
 
+  Board.prototype.addBug = function(){
+    var newBugPos = this.pickRandPos();
+    while (this.checkForSnakeAtPos(newBugPos)){
+      newBugPos = this.pickRandPos();
+    }
+    this.bug = newBugPos
+  };
+
   Board.prototype.addApple = function(){
-    var newApplePos = this.pickApplePos();
+    var newApplePos = this.pickRandPos();
     while (this.checkForSnakeAtPos(newApplePos)){
-      newApplePos = this.pickApplePos();
+      newApplePos = this.pickRandPos();
     }
     this.apple = newApplePos
   };
@@ -75,6 +88,14 @@
     }
   };
 
+  Board.prototype.bugEaten = function(){
+    if (this.bug && this.checkForSnakeAtPos(this.bug)){
+      return true;
+    } else {
+      return false;
+    }
+  };
+
   Board.prototype.isOver = function(){
     var that = this;
     var over = false;
@@ -92,6 +113,10 @@
           over = true;
         }
       }
+    }
+    if (this.bugEaten()){
+      debugger
+      over = true;
     }
     return over;
   };
