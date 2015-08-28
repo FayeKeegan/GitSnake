@@ -12,6 +12,7 @@
     };
 
     View.prototype.setupGame= function(){
+      $(".commit-box").removeClass("level-1 level-2 level-3 level-4 current-day")
       $(".snake-game").empty();
       $(".welcome-message, .game-over-message").css({"display": "none"});
       $(".snake-game").css({"display": "block"});
@@ -26,8 +27,12 @@
     View.prototype.startGame = function(){
       this.setupGame();
       this.board = new SnakeGame.Board();
-      // this.run();
-      this.TURNCOUNT = 0;
+      this.streak = {};
+      this.streakCount = 0;
+      this.longestStreakCount = 0;
+      View.TURNCOUNT = 0;
+      View.DAYCOUNT = 0;
+      this.run();
       this.bindListener();
       this.setUpView();
     };
@@ -62,7 +67,7 @@
 
     View.prototype.displayPoints = function(){
       $("#points").text(this.points)
-      $("[number= " + this.points + "]").addClass("level-" + this.applePoints)
+      $(".commit-box.current-day").addClass("level-" + this.applePoints)
     };
 
     View.prototype.checkForApple = function(){
@@ -92,18 +97,40 @@
       that.board.snake.move();
       that.checkForSnakes();
       that.checkForApple();
+      if (!this.streak[View.DAYCOUNT] && !this.streak[View.DAYCOUNT - 1]){
+        this.streakCount = 0;
+      }
       if (that.board.appleEaten()){
+        if (View.DAYCOUNT === 1 || this.streak[View.DAYCOUNT - 1]){
+          if (!this.streak[View.DAYCOUNT]){
+            this.streakCount ++ ;
+          }
+        } else {
+          this.streakCount = 1;
+        }
+        this.streak[View.DAYCOUNT] = true;
+        if (this.streakCount > this.longestStreakCount){
+          this.longestStreakCount = this.streakCount;
+        }
         that.points = that.points + that.applePoints;
         that.displayPoints();
         that.removeApple();
-
         that.board.snake.grow();
       }
       if (!that.board.apple){
         that.board.addApple()
         that.hasApple = true;
       }
+      $(".commit-box[number=" + View.DAYCOUNT + "]").removeClass("current-day");
       View.TURNCOUNT ++;
+      this.setDayCount();
+      $(".commit-box[number=" + View.DAYCOUNT +  "]").addClass("current-day");
+      $("#longest-streak").text(this.longestStreakCount);
+      $("#current-streak").text(this.streakCount);
+    };
+
+    View.prototype.setDayCount = function(){
+      View.DAYCOUNT = View.TURNCOUNT < 30 ? 1 : Math.floor(View.TURNCOUNT / 20) + 1
     };
 
     View.prototype.run = function(){
@@ -116,7 +143,7 @@
           clearInterval(gameTimer);
           this.endGame();
         }
-      }.bind(this), 100);
+      }.bind(this), 200);
     }
 
     View.prototype.setUpView = function () {
