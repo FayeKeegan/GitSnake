@@ -13,6 +13,7 @@
   <script src="../js/snake.js"></script>
   <script src="../js/board.js"></script>
   <script src="../js/view.js"></script>
+  <script src="../js/messages.js"></script>
 
   <script>
     $(function(){
@@ -24,12 +25,10 @@
         var box = $("<div>").addClass("commit-box").attr("number", count)
         $(".points-list").append(box)
       }
-      var welcomeMessage = $("<h2>").text("WELCOME TO SNAKE").addClass("welcome-message")
-      $(".snake-board").append(welcomeMessage)
-      setTimeout(function(){
-        $(".snake-board").empty();
+      $(".start-button").click(function(){
+        $(".snake-board").empty()
         new SnakeGame.View($(".snake-board"))
-      },3000)
+      })
     });
   </script>
 
@@ -37,54 +36,9 @@
   <div class="container-fluid">
     <!-- Brand and toggle get grouped for better mobile display -->
     <div class="navbar-header">
-      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
-        <span class="sr-only">Toggle navigation</span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-      </button>
-      <a class="navbar-brand" href="#">Brand</a>
+      <div class="navbar-brand" href="#">
+        <i class="fa fa-git-square"></i><i class="fa fa-circle-o-notch"></i> GitSnake</div>
     </div>
-
-    <!-- Collect the nav links, forms, and other content for toggling -->
-    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-      <ul class="nav navbar-nav">
-        <li class="active"><a href="#">Link <span class="sr-only">(current)</span></a></li>
-        <li><a href="#">Link</a></li>
-        <li class="dropdown">
-          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Dropdown <span class="caret"></span></a>
-          <ul class="dropdown-menu">
-            <li><a href="#">Action</a></li>
-            <li><a href="#">Another action</a></li>
-            <li><a href="#">Something else here</a></li>
-            <li role="separator" class="divider"></li>
-            <li><a href="#">Separated link</a></li>
-            <li role="separator" class="divider"></li>
-            <li><a href="#">One more separated link</a></li>
-          </ul>
-        </li>
-      </ul>
-      <form class="navbar-form navbar-left" role="search">
-        <div class="form-group">
-          <input type="text" class="form-control" placeholder="Search">
-        </div>
-        <button type="submit" class="btn btn-default">Submit</button>
-      </form>
-      <ul class="nav navbar-nav navbar-right">
-        <li><a href="#">Link</a></li>
-        <li class="dropdown">
-          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Dropdown <span class="caret"></span></a>
-          <ul class="dropdown-menu">
-            <li><a href="#">Action</a></li>
-            <li><a href="#">Another action</a></li>
-            <li><a href="#">Something else here</a></li>
-            <li role="separator" class="divider"></li>
-            <li><a href="#">Separated link</a></li>
-          </ul>
-        </li>
-      </ul>
-    </div><!-- /.navbar-collapse -->
-  </div><!-- /.container-fluid -->
 </nav>
 
   <div class='container'>
@@ -101,7 +55,18 @@
         <div class="panel panel-default">
           <div class="panel-heading"> GitSnake </div>
           <div class='panel-body'>
-            <div class="snake-board"> </div>
+            <div class="snake-board">
+              <br>
+              <h4> You're a total newb. </h4>
+              <br>
+              <h4> But one day you'll be a bad ass hacker. </h4>
+              <br>
+              <h4> Collect <strong class="commit-icon"> commits <i class="fa fa-stop commit-icon"></i> </strong> to look more legit. </h4>
+              <br>
+              <h4> But watch out for <strong class="bug-icon">  bugs <i class="fa fa-bug bug-icon"></i></strong>!</h4>
+              <br>
+              <h2> <div class="btn btn-default start-button"> Begin</div> </h2>
+            </div>
           </div>
         </div>
       </div>
