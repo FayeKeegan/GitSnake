@@ -17,18 +17,21 @@
 
   <script>
     $(function(){
-
       var count = 0;
-      ["M", "", "W", "", "F"]
+      var days = ["", "M", "", "W", "", "F", ""]
+
+      days.forEach(function(day){
+        var box = $("<div>").addClass("day-box").attr("number", count).text(day)
+        $(".points-list").append(box)
+      });
       while (count < 189){
         count = count + 1;
         var box = $("<div>").addClass("commit-box").attr("number", count)
         $(".points-list").append(box)
       }
-      $(".start-button").click(function(){
-        $(".snake-board").empty()
-        new SnakeGame.View($(".snake-board"))
-      })
+      $(".snake-game").css({"display": "none"})
+      $(".game-over-message").css({"display": "none"})
+      new SnakeGame.View($(".snake-board"))
     });
   </script>
 
@@ -56,16 +59,29 @@
           <div class="panel-heading"> GitSnake </div>
           <div class='panel-body'>
             <div class="snake-board">
-              <br>
-              <h4> You're a total newb. </h4>
-              <br>
-              <h4> But one day you'll be a bad ass hacker. </h4>
-              <br>
-              <h4> Collect <strong class="commit-icon"> commits <i class="fa fa-stop commit-icon"></i> </strong> to look more legit. </h4>
-              <br>
-              <h4> But watch out for <strong class="bug-icon">  bugs <i class="fa fa-bug bug-icon"></i></strong>!</h4>
-              <br>
-              <h2> <div class="btn btn-default start-button"> Begin</div> </h2>
+              <div class="snake-game"></div>
+              <div class="welcome-message">
+                <br>
+                <h4> You're a total newb. </h4>
+                <br>
+                <h4> But one day you'll be a bad ass hacker. </h4>
+                <br>
+                <h4> Collect <strong class="commit-icon"> commits <i class="fa fa-stop commit-icon"></i> </strong> to look more legit. </h4>
+                <br>
+                <h4> But watch out for <strong class="bug-icon">  bugs <i class="fa fa-bug bug-icon"></i></strong>!</h4>
+                <br>
+                <h2> <div class="btn btn-default start-button"> Begin</div> </h2>
+              </div>
+              <div class="game-over-message">
+                <br>
+                <h4> Oof. You're dead </h4>
+                <br>
+                <h4> Put on those head phones and jam again! </h4>
+                <br>
+                <br>
+                <br>
+                <h2> <div class="btn btn-default restart-button"> Play Again!</div> </h2>
+              </div>
             </div>
           </div>
         </div>

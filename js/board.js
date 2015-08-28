@@ -49,7 +49,7 @@
   Board.prototype.addApple = function(){
     var newApplePos = this.pickApplePos();
     while (this.checkForSnakeAtPos(newApplePos)){
-      newApplePos = pickApplePos();
+      newApplePos = this.pickApplePos();
     }
     this.apple = newApplePos
   };

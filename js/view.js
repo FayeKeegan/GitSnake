@@ -2,17 +2,35 @@
     var SnakeGame = window.SnakeGame = window.SnakeGame || {};
 
     var View = SnakeGame.View = function($el){
-      this.board = new SnakeGame.Board();
       this.$el = $el;
-      this.bindListener();
-      this.setUpView();
-      this.run();
-      this.applePoints = 1
+      this.applePoints = 4
       this.$apple = $("<i>").addClass("fa fa-code-fork apple");
       this.points = 0;
+      $(".start-button, .restart-button").click(function(){
+        this.startGame();
+      }.bind(this))
     };
 
-    View.TURNCOUNT = 0;
+    View.prototype.setupGame= function(){
+      $(".snake-game").empty();
+      $(".welcome-message, .game-over-message").css({"display": "none"});
+      $(".snake-game").css({"display": "block"});
+    };
+
+    View.prototype.endGame = function(){
+      $(".snake-game").css({"display": "none"});
+      $(".game-over-message").css({"display" : "block"});
+    };
+
+
+    View.prototype.startGame = function(){
+      this.setupGame();
+      this.board = new SnakeGame.Board();
+      // this.run();
+      this.TURNCOUNT = 0;
+      this.bindListener();
+      this.setUpView();
+    };
 
     View.prototype.bindListener = function () {
       var that = this;
@@ -49,7 +67,7 @@
 
     View.prototype.checkForApple = function(){
       if (!this.applePoints){
-        this.applePoints = Math.floor(Math.random() * 5 +1)
+        this.applePoints = Math.floor(Math.random() * 4 + 1)
       }
       if (this.board.apple){
         var row = this.board.apple[0];
@@ -91,15 +109,19 @@
     View.prototype.run = function(){
       var that = this;
       var turnCount = 0;
-      setInterval(function(){
+      var gameTimer = setInterval(function(){
         if(!that.board.isOver()){
           that.step();
+        } else {
+          clearInterval(gameTimer);
+          this.endGame();
         }
-      }.bind(this), 150);
+      }.bind(this), 100);
     }
 
     View.prototype.setUpView = function () {
-      var $board = this.$el;
+      $(".snake-game").css({"display": "block"})
+      var $board = $(".snake-game");
       for (var i = 0; i < this.board.grid.length; i++) {
         var $row = $("<div>");
         $board.append($row);
