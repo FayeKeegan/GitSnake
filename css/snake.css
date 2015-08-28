@@ -55,16 +55,19 @@ body {
   background-color: green;
 }
 .fa.apple {
-  color: white;
+  color: #f5f5f5;
   display: inline-block;
-  font: normal normal normal 10px/1 FontAwesome;
+  font: normal normal normal 25px/1 FontAwesome;
+  vertical-align: -webkit-baseline-middle
   text-rendering: auto;
   -webkit-font-smoothing: antialiased;
 }
 
 .fa.snake-segment {
+  color: #f5f5f5;
   display: inline-block;
-  font: normal normal normal 10px/1 FontAwesome;
+  font: normal normal normal 25px/1 FontAwesome;
+  vertical-align: -webkit-baseline-middle
   text-rendering: auto;
   -webkit-font-smoothing: antialiased;
 }
@@ -91,10 +94,13 @@ body {
   padding: 0;
   float: left;
   box-sizing: border-box;
-  width: 15px;
-  height: 15px;
+  width: 30px;
+  height: 30px;
   background: #f5f5f5;
   position: relative;
+}
+.box.has-snake {
+  background-color: #333;
 }
 
 .panel-body.contributions-panel-body {

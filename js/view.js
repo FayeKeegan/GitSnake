@@ -57,12 +57,12 @@
         var row = segment[0];
         var col = segment[1];
         var snakeSeg = $("<i>").addClass("fa fa-github-square snake-segment")
-        $(".box.col-"+ col + ".row-" + row).append(snakeSeg);
+        $(".box.col-"+ col + ".row-" + row).append(snakeSeg).addClass("has-snake");
       });
     };
 
     View.prototype.clearBoard = function(){
-      $(".box").empty();
+      $(".box").empty().removeClass("has-snake");
     }
 
     View.prototype.displayPoints = function(){

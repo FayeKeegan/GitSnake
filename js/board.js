@@ -9,7 +9,7 @@
     this.apple = [2,9];
   };
 
-  Board.BOARD_SIZE = 30;
+  Board.BOARD_SIZE = 15;
   Board.SNAKE_SIZE = 3;
   Board.SNAKE_START = [7, 7];
 
