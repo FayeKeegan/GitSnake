@@ -9,7 +9,7 @@ The classic game of snake with a twist! Move the snake around the screen to coll
 * Use arrow keys to direct your snake:  ←  ↑  →  ↓
 * Don't hit bugs, don't hit walls, don't hit yourself
 
-### Implementation 
+## Implementation 
 This game of snake is implemented using JavaScript, jQuery and CSS.
 
 
