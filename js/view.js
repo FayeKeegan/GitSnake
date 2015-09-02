@@ -110,45 +110,56 @@
     };
 
     View.prototype.renderView = function(){
-      that.clearBoard();
-      that.checkForSnakes();
-      that.checkForApple();
-      that.checkForBug();
+      this.clearBoard();
+      this.checkForSnakes();
+      this.checkForApple();
+      this.checkForBug();
     }
 
-    View.prototype.step = function(){
-      var that = this;
-      that.renderView();
+    View.prototype.resetStreakCount = function(){
       if (!this.streak[View.DAYCOUNT] && !this.streak[View.DAYCOUNT - 1]){
         this.streakCount = 0;
       }
-      if (that.board.appleEaten()){
-        if (View.DAYCOUNT === 1 || this.streak[View.DAYCOUNT - 1]){
+    }
+
+    View.prototype.updateStreakCount = function(){
+      if (View.DAYCOUNT === 1 || this.streak[View.DAYCOUNT - 1]){
           if (!this.streak[View.DAYCOUNT]){
             this.streakCount ++ ;
           }
         } else {
           this.streakCount = 1;
         }
-        this.streak[View.DAYCOUNT] = true;
-        if (this.streakCount > this.longestStreakCount){
-          this.longestStreakCount = this.streakCount;
-        }
-        that.points = that.points + that.applePoints;
-        that.displayPoints();
-        that.removeApple();
-        that.board.snake.grow();
+      this.streak[View.DAYCOUNT] = true;
+    }
+
+    View.prototype.updateLongestStreak = function(){
+      if (this.streakCount > this.longestStreakCount){
+        this.longestStreakCount = this.streakCount;
+      } 
+    }
+
+    View.prototype.step = function(){
+      this.renderView();
+      this.resetStreakCount();
+      if (this.board.appleEaten()){
+        this.updateStreakCount();
+        this.updateLongestStreak();
+        this.points = this.points + this.applePoints;
+        this.displayPoints();
+        this.removeApple();
+        this.board.snake.grow();
       } else {
-        that.board.snake.move();
+        this.board.snake.move();
       }
-      if (!that.board.apple){
-        that.board.addApple()
-        that.hasApple = true;
+      if (!this.board.apple){
+        this.board.addApple()
+        this.hasApple = true;
       }
 
       if (View.TURNCOUNT % 20 === 0){
-        that.board.clearBug();
-        that.board.addBug();
+        this.board.clearBug();
+        this.board.addBug();
       }
       $(".commit-box[number=" + View.DAYCOUNT + "]").removeClass("current-day");
       View.TURNCOUNT ++;
