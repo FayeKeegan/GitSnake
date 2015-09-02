@@ -109,13 +109,16 @@
       this.board.clearApple();
     };
 
-
-    View.prototype.step = function(){
-      var that = this;
+    View.prototype.renderView = function(){
       that.clearBoard();
       that.checkForSnakes();
       that.checkForApple();
       that.checkForBug();
+    }
+
+    View.prototype.step = function(){
+      var that = this;
+      that.renderView();
       if (!this.streak[View.DAYCOUNT] && !this.streak[View.DAYCOUNT - 1]){
         this.streakCount = 0;
       }
