@@ -19,7 +19,6 @@
   Snake.prototype.grow = function(){
     var first = this.segments[0];
     var diff = Snake.MOVE_DIFFS[this.dir];
-
     var newPos = [first[0] + diff[0], first[1] + diff[1]];
     this.segments.unshift(newPos);
   }

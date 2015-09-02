@@ -113,7 +113,6 @@
     View.prototype.step = function(){
       var that = this;
       that.clearBoard();
-      that.board.snake.move();
       that.checkForSnakes();
       that.checkForApple();
       that.checkForBug();
@@ -136,6 +135,8 @@
         that.displayPoints();
         that.removeApple();
         that.board.snake.grow();
+      } else {
+        that.board.snake.move();
       }
       if (!that.board.apple){
         that.board.addApple()
