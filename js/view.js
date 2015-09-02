@@ -154,7 +154,7 @@
         this.displayPoints();
         this.removeApple();
         this.board.snake.grow();
-        thie.board.resetApple();
+        this.resetApple();
       } else {
         this.board.snake.move();
       }
