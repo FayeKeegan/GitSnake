@@ -17,10 +17,11 @@
   };
 
   Snake.prototype.grow = function(){
-    var first = this.segments[0]
+    var first = this.segments[0];
     var diff = Snake.MOVE_DIFFS[this.dir];
-    var newFirst = [first[0] + diff[0], first[1] + diff[1]]
-    this.segments = [newFirst].concat(this.segments)
+
+    var newPos = [first[0] + diff[0], first[1] + diff[1]];
+    this.segments.unshift(newPos);
   }
 
   Snake.prototype.turn = function (dir) {

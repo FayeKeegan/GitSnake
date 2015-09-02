@@ -115,7 +115,6 @@
       }
     }
     if (this.bugEaten()){
-      debugger
       over = true;
     }
     return over;
