@@ -109,6 +109,11 @@
       this.board.clearApple();
     };
 
+    View.prototype.resetApple = function(){
+      this.removeApple();
+      this.board.addApple()
+    }
+
     View.prototype.renderView = function(){
       this.clearBoard();
       this.checkForSnakes();
@@ -149,14 +154,10 @@
         this.displayPoints();
         this.removeApple();
         this.board.snake.grow();
+        thie.board.resetApple();
       } else {
         this.board.snake.move();
       }
-      if (!this.board.apple){
-        this.board.addApple()
-        this.hasApple = true;
-      }
-
       if (View.TURNCOUNT % 20 === 0){
         this.board.clearBug();
         this.board.addBug();
