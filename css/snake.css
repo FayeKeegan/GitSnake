@@ -17,6 +17,11 @@ body {
   color: #df3e3e
 }
 
+.contributions-sub-header {
+  color: rgb(118, 118, 118);
+  font-size: 12px;
+}
+
 
 .points-list {
   width: 119px;

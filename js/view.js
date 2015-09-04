@@ -144,15 +144,18 @@
       } 
     }
 
+    View.prototype.updatePoints = function(){
+      this.updateStreakCount();
+      this.updateLongestStreak();
+      this.points = this.points + this.applePoints;
+    }
+
     View.prototype.step = function(){
       this.renderView();
       this.resetStreakCount();
       if (this.board.appleEaten()){
-        this.updateStreakCount();
-        this.updateLongestStreak();
-        this.points = this.points + this.applePoints;
+        this.updatePoints();
         this.displayPoints();
-        this.removeApple();
         this.board.snake.grow();
         this.resetApple();
       } else {
