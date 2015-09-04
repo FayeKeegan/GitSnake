@@ -12,5 +12,10 @@ The classic game of snake with a twist! Move the snake around the screen to coll
 ## Implementation 
 This game of snake is implemented using JavaScript, jQuery and CSS.
 
+## Screen Shots
+
+![start](docs/screenshots/start.png)
+![play](docs/screenshots/play.png)
+![dead](docs/screenshots/end.png)
 
 [live_link]: http://fayekeegan.com/GitSnake/html/index.html
