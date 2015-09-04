@@ -5,7 +5,8 @@
 The classic game of snake with a twist! Move the snake around the screen to collect git commits, taking yourself from newb to hacker status. 
 
 ## Instructions
-* Click [here][live_link]
+* Click [here][live_link] to play!
+
 * Use arrow keys to direct your snake:  ←  ↑  →  ↓
 * Don't hit bugs, don't hit walls, don't hit yourself
 
