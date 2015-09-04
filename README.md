@@ -16,6 +16,6 @@ This game of snake is implemented using JavaScript, jQuery and CSS.
 
 ![start](docs/screenshots/start.png)
 ![play](docs/screenshots/play.png)
-![dead](docs/screenshots/end.png)
+![dead](docs/screenshots/dead.png)
 
 [live_link]: http://fayekeegan.com/GitSnake/html/index.html
